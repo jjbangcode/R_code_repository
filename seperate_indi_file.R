@@ -52,10 +52,12 @@ for(i in 2:ncol(p_dat))
   p_tmp = p_dat[,c(1,i)]
   p_tmp1 = p_tmp[which(is.na(p_tmp[,2])==FALSE),]
   g_tmp = g_dat[which(g_dat[,2]==gsub('\\.','-',colnames(p_dat)[i])),]
-  lab =unique(c(g_tmp[,1], t_tmp[,1]))
-  a = cbind(lab,map_dat(lab,g_tmp[,1]),map_dat(lab,p_tmp[,1]))
+  lab =unique(c(p_tmp1[,1], g_tmp[,1]))
+  a = cbind(lab,map_dat(lab,g_tmp[,1]),map_dat(lab,p_tmp1[,1]))
   fn = paste('/home/starjjbang/Storage/part1/SAAVpedia/test_result/20190319_indi_SAAV_SNV/',gsub('\\.','-',colnames(p_dat)[i]),'.txt',sep='')
-  write.table(a,fn,quote=FALSE,row.names = FALSE,col.names = FALSE,sep='\t')
+  print(dim(a))
+  #write.table(a,fn,quote=FALSE,row.names = FALSE,col.names = FALSE,sep='\t')
   print(i)
 }
+
 
